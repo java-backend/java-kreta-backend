@@ -1,6 +1,6 @@
 package org.example.kreta.model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Teacher {
 
@@ -8,7 +8,7 @@ public class Teacher {
     private String firstName;
     private String lastName;
     private boolean wooman;
-    private Date dataOfBirth;
+    private Calendar dataOfBirth;
     private String city;
     private String streetAndNumber;
     private int postCode;
@@ -17,7 +17,7 @@ public class Teacher {
     private int grossSalary;
     private int numberOfChildren;
 
-    public Teacher(long id, String firstName, String lastName, boolean wooman, Date dataOfBirth) {
+    public Teacher(long id, String firstName, String lastName, boolean wooman, Calendar dataOfBirth) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,7 +41,7 @@ public class Teacher {
         return wooman;
     }
 
-    public Date getDataOfBirth() {
+    public Calendar getDataOfBirth() {
         return dataOfBirth;
     }
 
@@ -89,7 +89,7 @@ public class Teacher {
         this.wooman = wooman;
     }
 
-    public void setDataOfBirth(Date dataOfBirth) {
+    public void setDataOfBirth(Calendar dataOfBirth) {
         this.dataOfBirth = dataOfBirth;
     }
 

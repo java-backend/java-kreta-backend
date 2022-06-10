@@ -1,21 +1,23 @@
 package org.example.kreta.model;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Student {
     private long id;
     private String fullName;
-    private Date birthday;
+    private Calendar birthday;
     private boolean isWoman;
 
     public Student() {
         this.id = -1;
         this.fullName = "";
-        this.birthday = new Date();
+        this.birthday = new GregorianCalendar();
         this.isWoman = true;
     }
 
-    public Student(long iD, String fullName, Date birthday, boolean isWoman) {
+    public Student(long iD, String fullName, Calendar birthday, boolean isWoman) {
         this.id = iD;
         this.fullName = fullName;
         this.birthday = birthday;
@@ -38,11 +40,11 @@ public class Student {
         this.fullName = fullName;
     }
 
-    public Date getBirthday() {
+    public Calendar getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(Calendar birthday) {
         this.birthday = birthday;
     }
 
