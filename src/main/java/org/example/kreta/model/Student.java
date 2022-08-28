@@ -1,17 +1,30 @@
 package org.example.kreta.model;
 
+import javax.persistence.*;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
+// https://www.baeldung.com/jpa-entities
+@Entity
+@Table(name="student")
 public class Student {
-    private long id;
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name="name", length=30, nullable=false, unique=false)
     private String fullName;
+    @Column(name = "birthday",nullable = false,unique = false)
     private Calendar birthday;
+    @Column(name = "iswoman",nullable = false,unique = false)
     private boolean isWoman;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Student() {
-        this.id = -1;
+        this.id = Long.valueOf(-1);
         this.fullName = "";
         this.birthday = new GregorianCalendar();
         this.isWoman = true;
