@@ -3,10 +3,12 @@ package org.example.kreta.service;
 import org.example.kreta.model.Student;
 import org.example.kreta.repo.interfaces.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class StudentsService {
 
     @Autowired
