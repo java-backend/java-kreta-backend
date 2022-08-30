@@ -23,6 +23,12 @@ public class StudentsController {
         return studentsService.getStudentById(studentid);
     }
 
+    @DeleteMapping(value="/student/{studentid}",name = "Delete student")
+    private void deleteStudent(@PathVariable("studentid") Long studentid) {
+        studentsService.delete(studentid);
+    }
+
+
     @PostMapping(value = "/student",name="Save new student")
     private Long saveStudent(@RequestBody Student student) {
         studentsService.saveOrUpdate(student);
