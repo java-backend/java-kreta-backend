@@ -16,7 +16,7 @@ public class StudentRepo {
 
     private List<Student> students;
 
-    public StudentRepo() {  this.students = new ArrayList<Student>();  }
+    public StudentRepo() {  this.students = new ArrayList<Student>(); MakeTestData(); }
 
     public void MakeTestData()  {
         students.add(new Student(1,"Kis Pista", new GregorianCalendar(2002,1,15),false));
