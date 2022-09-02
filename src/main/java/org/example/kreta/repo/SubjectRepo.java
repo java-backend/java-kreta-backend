@@ -1,6 +1,8 @@
 package org.example.kreta.repo;
 
 import org.example.kreta.model.Subject;
+import org.example.kreta.repo.interfaces.SubjectRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;
 import java.util.List;
