@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+// https://www.javatpoint.com/spring-boot-crud-operations
 @RestController
 public class SubjectController {
     @Autowired
-  SubjectsService subjectsService;
+    SubjectsService subjectsService;
     @GetMapping(value="/subject",name="List of all subjects")
 
     private List<Subject> getAllSubjects(){
