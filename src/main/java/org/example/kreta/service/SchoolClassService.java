@@ -21,7 +21,7 @@ public class SchoolClassService {
         return schoolClasses ;
     }
 
-    public SchoolClass getSchoolClass(Long id) {return schoolClassRepository.findById(id).get();
+    public SchoolClass getSchoolClassByID(Long id) {return schoolClassRepository.findById(id).get();
     }
 
     public void saveOrUpdate(SchoolClass schoolClass) {
