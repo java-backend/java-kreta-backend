@@ -1,0 +1,37 @@
+<!DOCTYPE html >
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">>
+<head>
+    <meta charset="UTF-8">
+    <title>Diákok</title>
+</head>
+<body>
+<!-- https://www.baeldung.com/spring-boot-crud-thymeleaf -->
+<div th:switch="${students}">
+  <h2 th:case="null">Nincs még diák az adatbázisban!</h2>
+  <div th:case="*">
+    <h2>Diákok</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Azon.</th>
+          <th>Név</th>
+          <th>Születési idő</th>
+          <th>Nem</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr th:each="student: ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.fullName}"></td>
+        <td th:text="${student.birthday}"></td>
+        <!-- https://www.baeldung.com/spring-thymeleaf-conditionals-->
+        <td th:text="${student.isWoman} ? 'nő' : 'férfi'"/>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

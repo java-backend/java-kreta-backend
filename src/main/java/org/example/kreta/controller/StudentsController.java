@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -16,10 +17,12 @@ public class StudentsController {
     StudentsService service;
 
     @GetMapping("/students/index")
-    public String showStudentsList(Model model)
+    public ModelAndView showStudentsList()
     {
         List<Student> students = service.getAllStudents();
-        model.addAttribute("students",students);
-        return "students";
+        ModelAndView mav=new ModelAndView("students/index");
+        mav.addObject("students",students);
+
+        return mav;
     }
 }
