@@ -14,7 +14,7 @@
 	<name>kreta</name>
 	<description>Kreta - iskolai adminisztráció - backend gyakorlás</description>
 	<properties>
-		<java.version>19</java.version>
+		<java.version>18</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
