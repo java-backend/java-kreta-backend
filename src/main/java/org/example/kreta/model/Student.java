@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Calendar;
 
 //https://www.baeldung.com/intro-to-project-lombok
@@ -24,6 +25,7 @@ public class Student {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @NotBlank(message = "Name is mandatory")
     @Column(name="name", length=30, nullable=false, unique=false)
     private String fullName;
     @Column(name = "birthday",nullable = true,unique = false)
