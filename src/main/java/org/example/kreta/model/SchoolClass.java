@@ -1,11 +1,30 @@
 package org.example.kreta.model;
 
+import javax.persistence.*;
 
+
+@Entity
+@Table (name="schoolClass")
 public class SchoolClass {
-    private long id;
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column (name = "schoolClass",unique = false)
     private int schoolClass;
+    @Column(name = "classType",nullable = false)
     private char classType;
+    @Column (name = "teacherId", nullable = false)
     private int teacherId;
+
+
+    public SchoolClass() {
+        this.id=Long.valueOf(-1);
+        this.schoolClass=1;
+        this.classType='c';
+        this.teacherId=-1;
+
+    }
 
     public SchoolClass(long id, int schoolClass, char classType, int teacherId) {
         this.id = id;
@@ -13,6 +32,8 @@ public class SchoolClass {
         this.classType = classType;
         this.teacherId = teacherId;
     }
+
+
 
     public long getId() {
         return id;
@@ -30,7 +51,7 @@ public class SchoolClass {
         return teacherId;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -44,6 +65,16 @@ public class SchoolClass {
 
     public void setTeacherId(int teacherId) {
         this.teacherId = teacherId;
+    }
+
+    @Override
+    public String toString() {
+        return "SchoolClass{" +
+                "id=" + id +
+                ", schoolClass=" + schoolClass +
+                ", classType=" + classType +
+                ", teacherId=" + teacherId +
+                '}';
     }
 }
 
