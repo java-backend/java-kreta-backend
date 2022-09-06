@@ -8,7 +8,7 @@ import java.util.List;
 
 // https://www.javatpoint.com/spring-boot-crud-operations
 @RestController
-public class SubjectController {
+public class SubjectsApiController {
     @Autowired
     SubjectsService subjectsService;
     @GetMapping(value="/subject",name="List of all subjects")

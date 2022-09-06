@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Tantárgyak</title>
 </head>
 <body>
+<div th:switch="${subjects}">
+  <h2 th:case="null">Nincs még tantárgy az adatbázisban!</h2>
+  <div th:case="*">
+    <h2>Tantárgyak</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Azon.</th>
+        <th>Tantárgy</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="subject: ${subjects}">
+        <td th:text="${subject.id}"></td>
+        <td th:text="${subject.subjectName}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
 
 </body>
 </html>
