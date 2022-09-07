@@ -1,8 +1,6 @@
 package org.example.kreta.controller;
 
-import org.example.kreta.model.Student;
 import org.example.kreta.model.Subject;
-import org.example.kreta.service.StudentsService;
 import org.example.kreta.service.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

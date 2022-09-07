@@ -1,7 +1,7 @@
 package org.example.kreta.controller;
 
 import org.example.kreta.model.SchoolClass;
-import org.example.kreta.service.SchoolClassService;
+import org.example.kreta.service.SchoolClassesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,9 +9,9 @@ import java.util.List;
 
 
 @RestController
-public class SchoolClassController {
+public class SchoolClassesApiController {
     @Autowired
-    SchoolClassService schoolClassService;
+    SchoolClassesService schoolClassService;
 
     @GetMapping(value="/schoolClass",name="List of all schoolClasses")
     private List<SchoolClass> getAllSchoolClasses() {

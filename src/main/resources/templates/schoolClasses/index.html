@@ -1,0 +1,36 @@
+<!DOCTYPE html >
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Osztályok</title>
+</head>
+<body>
+<!-- https://www.baeldung.com/spring-boot-crud-thymeleaf -->
+<div th:switch="${schoolClasses}">
+  <h2 th:case="null">Nincs még osztály az adatbázisban!</h2>
+  <div th:case="*">
+    <h2>Osztályok</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Azon.</th>
+        <th>Évfolyam</th>
+        <th>Osztály</th>
+        <th>TanárAzon</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="schoolClasses: ${schoolClasses}">
+        <td th:text="${schoolClass.id}"></td>
+        <td th:text="${schoolClass.schoolClass}"></td>
+        <td th:text="${schoolClass.teacherid}"></td>
+        <!-- https://www.baeldung.com/spring-thymeleaf-conditionals-->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>
