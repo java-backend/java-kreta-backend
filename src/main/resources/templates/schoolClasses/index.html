@@ -20,10 +20,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="schoolClasses: ${schoolClasses}">
+      <tr th:each="schoolClass: ${schoolClasses}">
         <td th:text="${schoolClass.id}"></td>
         <td th:text="${schoolClass.schoolClass}"></td>
-        <td th:text="${schoolClass.teacherid}"></td>
+        <td th:text="${schoolClass.teacherId}"></td>
         <!-- https://www.baeldung.com/spring-thymeleaf-conditionals-->
       </tr>
       </tbody>
