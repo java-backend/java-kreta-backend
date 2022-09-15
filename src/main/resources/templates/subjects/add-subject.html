@@ -7,7 +7,7 @@
 <body>
 <h2>Új tantárgy hozzáadása</h2>
 
-<form action="#" th:action="@{/subjects}" th:object="${subject}" method="post">
+<form action="#" th:action="@{/subject}" th:object="${subjects}" method="post">
     <label for="id">Tantárgy azonosító</label>
     <input type="number" th:field="*{id}" id="id" placeholder="id">
     <span th:if="${#fields.hasError('id')}" th:errors="*{id}"></span>

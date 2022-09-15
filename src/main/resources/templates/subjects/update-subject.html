@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="hu"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tantárgy szerkesztése</title>
+
+</head>
+<body>
+<h2>Tantárgy szerkeztése</h2>
+<form action="#"
+      th:action="@{/update/{id}(id=${subject.id})}" th:object="${subject}" method="post">
+    <label for="id">Azon</label>
+    <input type="number" th:field="*{id}" id="id" placeholder="id">
+    <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+    <label for="name">Név</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="name">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <input type="submit" value="Update User">
+</form>
+
+</body>
+</html>
