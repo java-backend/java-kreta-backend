@@ -1,4 +1,4 @@
-package org.example.kreta.repo;
+package org.example.kreta.repo.oldrepo;
 
 
 import org.example.kreta.model.LearnClassSubject;

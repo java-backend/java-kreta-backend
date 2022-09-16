@@ -1,8 +1,8 @@
 package org.example.kreta.service;
 
 import org.example.kreta.model.Teacher;
-import org.example.kreta.repo.SchoolClassesRepo;
-import org.example.kreta.repo.TeachersRepo;
+import org.example.kreta.repo.oldrepo.SchoolClassesRepo;
+import org.example.kreta.repo.oldrepo.TeachersRepo;
 
 public class HeadTeacherService {
     private SchoolClassesRepo schoolClassesRepo;
