@@ -1,13 +1,22 @@
 package org.example.kreta.controller;
 
 import org.example.kreta.model.Student;
+import org.example.kreta.model.dto.QueryStringParameterDto;
+import org.example.kreta.repo.exceptions.RecordNotFoundException;
 import org.example.kreta.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 
+import java.util.ArrayList;
 import java.util.List;
 
+// Maven search
 @RestController
+@RequestMapping("/api")
 public class StudentsAPIController {
 
     @Autowired
@@ -15,35 +24,57 @@ public class StudentsAPIController {
 
     //GET
     // http://localhost:8888/api/student
-    @GetMapping(value="/api/student",name="List of all students")
+    @GetMapping(value="/student",name="List of all students")
     private List<Student> getAllStudents() {
         return studentsService.getAllStudents();
     }
 
     //GET
     //http://localhost:8888/api/student/1
-    @GetMapping(value = "/api/student/{studentid}", name = "Get student by id")
-    private Student getStudent(@PathVariable("studentid") Long studentid) {
-        return studentsService.getStudentById(studentid);
+    @GetMapping(value = "/student/{studentid}", name = "Get student by id")
+    private ResponseEntity<Student> getStudent(@PathVariable("studentid") Long studentid) throws RecordNotFoundException {
+        Student entity=studentsService.getStudentById(studentid);
+        return new ResponseEntity<Student>(entity,new HttpHeaders(), HttpStatus.OK);
     }
 
     //DELETE
     //http://localhost:8888/api/student/1
-    @DeleteMapping(value="/api/student/{studentid}",name = "Delete student")
-    private void deleteStudent(@PathVariable("studentid") Long studentid) {
+    @DeleteMapping(value="/student/{studentid}",name = "Delete student")
+    private HttpStatus deleteStudent(@PathVariable("studentid") Long studentid) throws RecordNotFoundException {
         studentsService.delete(studentid);
+        return HttpStatus.FORBIDDEN;
     }
 
     //http://localhost:8888/api/student
-    @PostMapping(value = "/api/student",name="Save new student")
-    private Long saveStudent(@RequestBody Student student) {
-        studentsService.saveOrUpdate(student);
-        return student.getId();
+    @PostMapping(value = "/student",name="Save new student")
+    private ResponseEntity<Student> saveStudent(@RequestBody Student entity) throws RecordNotFoundException {
+        Student student= studentsService.saveOrUpdate(entity);
+        return new ResponseEntity<Student>(student,new HttpHeaders(), HttpStatus.OK);
     }
-    //http://localhost:8888/api/student
-    @PutMapping(value = "/api/student",name="Update student")
-    private Student update(@RequestBody Student student) {
-        studentsService.saveOrUpdate(student);
-        return student;
+    //http://localhost:8888/student
+    @PutMapping(value = "/student",name="Update student")
+    private ResponseEntity<Student> update(@RequestBody Student entity) throws RecordNotFoundException {
+        Student student = studentsService.saveOrUpdate(entity);
+        return new ResponseEntity<Student>(student,new HttpHeaders(), HttpStatus.OK);
+    }
+
+    // Sorting, filtring, paging
+    // https://cloud.spring.io/spring-cloud-static/spring-cloud-openfeign/2.1.5.RELEASE/multi/multi_spring-cloud-feign.html#_feign_querymap_support
+    @GetMapping("/student/parameters")
+    public ResponseEntity<List<Student>> getAllStudentsParameterised(@SpringQueryMap QueryStringParameterDto queryStringParameterDto)     {
+        List<Student> students= new ArrayList<Student>();
+
+        if (queryStringParameterDto.isPaging() && queryStringParameterDto.isSorting())
+            students=studentsService.getAllStudents(queryStringParameterDto.getCurrentPage(),
+                    queryStringParameterDto.getPageSize(),
+                    queryStringParameterDto.getFilter());
+        else if (!queryStringParameterDto.isSorting())
+            students = studentsService.getAllStudents(queryStringParameterDto.getCurrentPage(),
+                    queryStringParameterDto.getPageSize(),
+                    "");
+        else if (!queryStringParameterDto.isPaging())
+            students = getAllStudents();
+
+        return  new ResponseEntity<List<Student>>(students,new HttpHeaders(),HttpStatus.OK);
     }
 }
