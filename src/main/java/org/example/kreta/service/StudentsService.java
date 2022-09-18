@@ -1,6 +1,7 @@
 package org.example.kreta.service;
 
 import org.example.kreta.model.Student;
+import org.example.kreta.model.generic.PagedList;
 import org.example.kreta.repo.exceptions.RecordNotFoundException;
 import org.example.kreta.repo.interfaces.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,21 +56,28 @@ public class StudentsService {
         studentRepository.save(student);
     }
 
-    public List<Student> getAllStudents(Integer pageNo, Integer pageSize, String sortBy) {
+    public PagedList<Student> getAllStudents(Integer pageNo, Integer pageSize, String sortBy) {
         Pageable paging;
         if (sortBy!=null)
             paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
         else
             paging = PageRequest.of(pageNo, pageSize);
         Page<Student> pagedResult = studentRepository.findAll(paging);
+        PagedList<Student> pagedList = new PagedList<Student>();
+
         if (pagedResult.hasContent()) {
-            return pagedResult.getContent();
+            pagedList.setList(pagedResult.getContent());
+            pagedList.setCurrentPage(pageNo);
+            pagedList.setPageSize(pagedList.size());
+            pagedList.setNumberOfPage(paging.getPageNumber());
+            pagedList.setNumberOfItem(pagedList.size());
         }
-        else
-            return new ArrayList<Student>();
-
-
-
-
+        else {
+            pagedList.setCurrentPage(pageNo);
+            pagedList.setPageSize(pageSize);
+            pagedList.setNumberOfPage(paging.getPageNumber());
+            pagedList.setNumberOfItem(studentRepository.count());
+        }
+        return pagedList;
     }
 }

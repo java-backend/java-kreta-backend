@@ -2,6 +2,7 @@ package org.example.kreta.controller;
 
 import org.example.kreta.model.Student;
 import org.example.kreta.model.dto.QueryStringParameterDto;
+import org.example.kreta.model.generic.PagedList;
 import org.example.kreta.repo.exceptions.RecordNotFoundException;
 import org.example.kreta.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,20 +62,23 @@ public class StudentsAPIController {
     // Sorting, filtring, paging
     // https://cloud.spring.io/spring-cloud-static/spring-cloud-openfeign/2.1.5.RELEASE/multi/multi_spring-cloud-feign.html#_feign_querymap_support
     @GetMapping("/student/parameters")
-    public ResponseEntity<List<Student>> getAllStudentsParameterised(@SpringQueryMap QueryStringParameterDto queryStringParameterDto)     {
-        List<Student> students= new ArrayList<Student>();
-
+    public ResponseEntity<PagedList<Student>> getAllStudentsParameterised(@SpringQueryMap QueryStringParameterDto queryStringParameterDto)     {
+        PagedList<Student> students= new PagedList<>();
         if (queryStringParameterDto.isPaging() && queryStringParameterDto.isSorting())
             students=studentsService.getAllStudents(queryStringParameterDto.getCurrentPage(),
                     queryStringParameterDto.getPageSize(),
                     queryStringParameterDto.getFilter());
-        else if (!queryStringParameterDto.isSorting())
-            students = studentsService.getAllStudents(queryStringParameterDto.getCurrentPage(),
+        else if (queryStringParameterDto.isSorting()) {
+            List<Student> listStudent = new ArrayList<Student>();
+            students.setList(listStudent);
+        }
+        else if (queryStringParameterDto.isPaging()) {
+            students = studentsService.getAllStudents(
+                    queryStringParameterDto.getCurrentPage(),
                     queryStringParameterDto.getPageSize(),
                     "");
-        else if (!queryStringParameterDto.isPaging())
-            students = getAllStudents();
+        }
 
-        return  new ResponseEntity<List<Student>>(students,new HttpHeaders(),HttpStatus.OK);
+        return  new ResponseEntity<PagedList<Student>>(students,new HttpHeaders(),HttpStatus.OK);
     }
 }
