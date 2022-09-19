@@ -1,8 +1,13 @@
 package org.example.kreta.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.example.kreta.model.Student;
 import org.example.kreta.model.dto.QueryStringParameterDto;
 import org.example.kreta.model.generic.PagedList;
+import org.example.kreta.model.paging.PagingResult;
+import org.example.kreta.model.paging.PagingResultSerializer;
 import org.example.kreta.repo.exceptions.RecordNotFoundException;
 import org.example.kreta.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +67,7 @@ public class StudentsAPIController {
     // Sorting, filtring, paging
     // https://cloud.spring.io/spring-cloud-static/spring-cloud-openfeign/2.1.5.RELEASE/multi/multi_spring-cloud-feign.html#_feign_querymap_support
     @GetMapping("/student/parameters")
-    public ResponseEntity<PagedList<Student>> getAllStudentsParameterised(@SpringQueryMap QueryStringParameterDto queryStringParameterDto)     {
+    public ResponseEntity<PagedList<Student>> getAllStudentsParameterised(@SpringQueryMap QueryStringParameterDto queryStringParameterDto) throws JsonProcessingException {
         PagedList<Student> students= new PagedList<>();
         if (queryStringParameterDto.isPaging() && queryStringParameterDto.isSorting())
             students=studentsService.getAllStudents(queryStringParameterDto.getCurrentPage(),
@@ -78,7 +83,13 @@ public class StudentsAPIController {
                     queryStringParameterDto.getPageSize(),
                     "");
         }
+        HttpHeaders headers=new HttpHeaders();
+        if (queryStringParameterDto.isPaging()) {
+            PagingResult result=students.getPagingResult();
+            String serialized = new ObjectMapper().writeValueAsString(result);
+            headers.add("X-Pagination",serialized);
+        }
 
-        return  new ResponseEntity<PagedList<Student>>(students,new HttpHeaders(),HttpStatus.OK);
+        return  new ResponseEntity<PagedList<Student>>(students,headers,HttpStatus.OK);
     }
 }

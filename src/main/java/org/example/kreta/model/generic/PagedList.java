@@ -2,6 +2,7 @@ package org.example.kreta.model.generic;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.example.kreta.model.paging.PagingResult;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,6 +26,14 @@ public class PagedList<T> implements Iterable,IPagedList {
         list = new ArrayList<T>();
     }
 
+    public PagingResult getPagingResult() {
+        PagingResult result=new PagingResult();
+        result.setCurrentPage(currentPage);
+        result.setPageSize(pageSize);
+        result.setNumberOfPage(numberOfPage);
+        result.setNumberOfItem(numberOfItem);
+        return result;
+    }
 
 
     @Override
