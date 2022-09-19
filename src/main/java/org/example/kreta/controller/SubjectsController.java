@@ -46,11 +46,14 @@ public class SubjectsController {
             service.saveOrUpdate(subject);
             return "redirect:/subjects/index/";
         }
-     /*   @GetMapping("/delete/{id}")
+        @GetMapping("/subject/delete/{id}")
         public String deleteUser (@PathVariable("id") long id, Model model) {
             Subject subject = service.getSubjectById(id);
-            ser;
-        }*/
+            service.delete(id);
+            return "redirect:/subjects/index";
+
+
+        }
 
 
        /* @PostMapping ("/adduser")
