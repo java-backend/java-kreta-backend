@@ -30,21 +30,21 @@ public class SubjectsController {
             return mav;
         }
 
-       @GetMapping("/edit/{id}")
+       @GetMapping("/subject/edit/{id}")
         public String showUpdateForm (@PathVariable("id") long id, Model model){
             Subject subject = service.getSubjectById(id);
            model.addAttribute("subject", subject);
-           return "update-subject";
+           return "/subjects/update-subject";
         }
 
-        @PostMapping("/update/{id}")
-        public String updateSubject(@PathVariable("id") long id, @Valid Subject subject, BindingResult result, Model model) {
+        @PostMapping("/subject/update/{id}")
+        public String updateSubject(@PathVariable("id") Long id, @Valid Subject subject, BindingResult result, Model model) {
             if (result.hasErrors()){
                 subject.setId(id);
-                return "update-subject";
+                return "/subjects/update-subject";
             }
             service.saveOrUpdate(subject);
-            return "redirect:/index/";
+            return "redirect:/subjects/index/";
         }
      /*   @GetMapping("/delete/{id}")
         public String deleteUser (@PathVariable("id") long id, Model model) {

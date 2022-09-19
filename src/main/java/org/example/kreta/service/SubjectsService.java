@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -22,7 +23,8 @@ public class SubjectsService {
     }
 
     public Subject getSubjectById(Long id) {
-        return subjectRepository.findById(id).get();
+        Optional<Subject> subject=subjectRepository.findById(id);
+        return subject.get();
     }
 
     public void saveOrUpdate(Subject subject) {
