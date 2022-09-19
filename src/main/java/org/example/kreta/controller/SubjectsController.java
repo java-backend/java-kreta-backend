@@ -32,7 +32,7 @@ public class SubjectsController {
 
        @GetMapping("/subject/edit/{id}")
         public String showUpdateForm (@PathVariable("id") long id, Model model){
-            Subject subject = service.getSubjectById(id);
+           Subject subject = service.getSubjectById(id);
            model.addAttribute("subject", subject);
            return "/subjects/update-subject";
         }
@@ -55,12 +55,27 @@ public class SubjectsController {
 
         }
 
+        @GetMapping ("/signup")
+        public ModelAndView showSingUpForm(){
+            Subject newSubject=new Subject();
+            ModelAndView mav=new ModelAndView();
+            mav.setViewName("/subjects/add-subject");
+            mav.addObject("subject",newSubject);
 
-       /* @PostMapping ("/adduser")
-        public ModelAndView showSubjectList(){
-            List<Subject> subjects = service.getAllSubjects();
-            ModelAndView mav=new ModelAndView("subjects/index");
-        }*/
+            return mav;
+        }
+
+
+
+        @PostMapping("/subject/add-subject")
+            public String addNewSubject(@Valid Subject subject, BindingResult result, Model model) {
+                if (result.hasErrors()) {
+                    return "/subject/add-subject";
+                }
+
+                service.saveOrUpdate(subject);
+                return "redirect:/subjects/index";
+    }
 
 
 
