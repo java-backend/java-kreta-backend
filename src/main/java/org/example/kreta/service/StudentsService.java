@@ -67,15 +67,17 @@ public class StudentsService {
 
         if (pagedResult.hasContent()) {
             pagedList.setList(pagedResult.getContent());
-            pagedList.setCurrentPage(pageNo);
-            pagedList.setPageSize(pagedList.size());
-            pagedList.setNumberOfPage(paging.getPageNumber());
-            pagedList.setNumberOfItem(pagedList.size());
+
+            pagedList.setCurrentPage(paging.getPageNumber());
+            pagedList.setPageSize(pageSize);
+            int numberOfPage=(int) Math.floor(studentRepository.count()/pageSize)+1;
+            pagedList.setNumberOfPage(numberOfPage);
+            pagedList.setNumberOfItem(studentRepository.count());
         }
         else {
-            pagedList.setCurrentPage(pageNo);
+            pagedList.setCurrentPage(paging.getPageNumber());
             pagedList.setPageSize(pageSize);
-            pagedList.setNumberOfPage(paging.getPageNumber());
+            pagedList.setNumberOfPage(0);
             pagedList.setNumberOfItem(studentRepository.count());
         }
         return pagedList;
