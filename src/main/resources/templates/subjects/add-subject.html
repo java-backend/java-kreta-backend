@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang=hu xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tantárgy hozzáadás</title>
+</head>
+<body>
+<h2>Új tantárgy hozzáadása</h2>
+
+<form action="#"
+      th:action="@{/subject/add-subject}"
+      th:object="${subject}"
+      method="post">
+    <label for="id">Azon</label>
+    <input type="number" th:field="*{id}" id="id" placeholder="id">
+    <label for="subjectName">Név</label>
+    <input type="text" th:field="*{subjectName}" id="subjectName" placeholder="Tantárgy neve">
+    <input type="submit" value="Tantárgy hozzáadása">
+</form>
+
+
+</body>
+</html>

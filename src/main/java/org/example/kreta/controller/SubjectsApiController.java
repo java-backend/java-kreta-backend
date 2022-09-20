@@ -19,7 +19,8 @@ public class SubjectsApiController {
 
     @GetMapping(value = "/subject/{subjectid}", name = "Get subject by id")
     private Subject getsubject(@PathVariable("subjectid") Long subjectid) {
-        return subjectsService.getSubjectById(subjectid);
+        Subject subject=subjectsService.getSubjectById(subjectid);
+        return subject;
     }
 
     @DeleteMapping(value="/subject/{subjectid}",name = "Delete subject")

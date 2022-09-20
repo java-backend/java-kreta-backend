@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Service
-public class SchoolClassService {
+public class SchoolClassesService {
 
     @Autowired
     SchoolClassRepository schoolClassRepository;
