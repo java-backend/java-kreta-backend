@@ -1,4 +1,4 @@
-package org.example.kreta.repo.interfaces;
+package org.example.kreta.repo;
 
 import org.example.kreta.model.Subject;
 import org.springframework.data.repository.CrudRepository;

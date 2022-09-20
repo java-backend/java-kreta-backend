@@ -1,7 +1,7 @@
 package org.example.kreta.service;
 
 import org.example.kreta.model.Subject;
-import org.example.kreta.repo.interfaces.SubjectRepository;
+import org.example.kreta.repo.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

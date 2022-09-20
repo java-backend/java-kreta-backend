@@ -1,6 +1,6 @@
 package org.example.kreta.service;
 import org.example.kreta.model.SchoolClass;
-import org.example.kreta.repo.interfaces.SchoolClassRepository;
+import org.example.kreta.repo.SchoolClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

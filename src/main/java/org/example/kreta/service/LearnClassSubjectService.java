@@ -1,9 +1,9 @@
 package org.example.kreta.service;
 
 import org.example.kreta.model.Subject;
-import org.example.kreta.repo.LearnClassSubjectRepo;
-import org.example.kreta.repo.SchoolClassesRepo;
-import org.example.kreta.repo.SubjectRepo;
+import org.example.kreta.repo.oldrepo.LearnClassSubjectRepo;
+import org.example.kreta.repo.oldrepo.SchoolClassesRepo;
+import org.example.kreta.repo.oldrepo.SubjectRepo;
 
 import java.util.List;
 
