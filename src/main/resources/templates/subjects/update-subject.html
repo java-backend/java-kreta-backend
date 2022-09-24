@@ -12,7 +12,7 @@
       th:object="${subject}"
       method="post">
     <label for="id">Azon</label>
-    <input type="number" th:field="*{id}" id="id" placeholder="id">
+    <input type="number" th:field="*{id}" id="id" placeholder="id" disabled="disabled">
     <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
     <label for="subjectName">Név</label>
     <input type="text" th:field="*{subjectName}" id="subjectName" placeholder="subjectName">
