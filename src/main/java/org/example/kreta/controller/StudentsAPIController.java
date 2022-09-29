@@ -66,6 +66,7 @@ public class StudentsAPIController {
 
     // Sorting, filtring, paging
     // https://cloud.spring.io/spring-cloud-static/spring-cloud-openfeign/2.1.5.RELEASE/multi/multi_spring-cloud-feign.html#_feign_querymap_support
+    // action: http://localhost:8888/api/student/parameters?currentPage=0&pageSize=5&orderBy=fullName
     @GetMapping("/student/parameters")
     public ResponseEntity<PagedList<Student>> getAllStudentsParameterised(@SpringQueryMap QueryStringParameterDto queryStringParameterDto) throws JsonProcessingException {
         PagedList<Student> students= new PagedList<>();
