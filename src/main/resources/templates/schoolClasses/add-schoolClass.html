@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Új osztály felvétele</title>
+</head>
+<body>
+<h2>Új osztály hozzáadása</h2>
+
+
+<form action="#"
+      th:action="@{/schoolClass/add-schoolClass}"
+      th:object="${schoolClass}"
+      method="post">
+  <label for="id">Azon</label>
+  <input type="number" th:field="*{id}" id="id" placeholder="id">
+  <label for="schoolClass">Évfolyam</label>
+  <input type="number" th:field="*{schoolClass}" id="schoolClass" placeholder="Évfolyam">
+    <label for="classType">Osztály</label>
+    <input type="text" th:field="*{classType}" id="classType" maxlength="1"  placeholder="Osztály">
+    <label for="id">Tanár azonosító</label>
+    <input type="number" th:field="*{teacherId}" id="teacherId" placeholder="Tanár azon.">
+  <input type="submit" value="Osztály hozzáadása">
+</form>
+
+</body>
+</html>

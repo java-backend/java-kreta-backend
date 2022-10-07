@@ -23,11 +23,17 @@
       <tr th:each="schoolClass: ${schoolClasses}">
         <td th:text="${schoolClass.id}"></td>
         <td th:text="${schoolClass.schoolClass}"></td>
+        <td th:text="${schoolClass.classType}"></td>
         <td th:text="${schoolClass.teacherId}"></td>
+        <td> <a th:href="@{/schoolClass/edit/{id}(id=${schoolClass.id})}">Edit</a></td>
+        <td> <a th:href="@{/schoolClass/delete/{id}(id=${schoolClass.id})}">Delete</a></td>
         <!-- https://www.baeldung.com/spring-thymeleaf-conditionals-->
       </tr>
       </tbody>
     </table>
+  </div>
+  <p> <a href="/schoolClass/signup">Új osztály felvétele</a> </p>
+</div>
   </div>
 
 </div>

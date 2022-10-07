@@ -26,11 +26,13 @@
         <td th:text="${student.birthday}"></td>
         <!-- https://www.baeldung.com/spring-thymeleaf-conditionals-->
         <td th:text="${student.isWoman} ? 'nő' : 'férfi'"/>
+        <td> <a th:href="@{/student/edit/{id}(id=${student.id})}">Edit</a></td>
+        <td> <a th:href="@{/student/delete/{id}(id=${student.id})}">Delete</a></td>
       </tr>
       </tbody>
     </table>
   </div>
-
+  <p> <a href="/student/signup">Add new student</a> </p>
 </div>
 
 </body>

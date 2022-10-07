@@ -51,21 +51,16 @@ public class SubjectsController {
             Subject subject = service.getSubjectById(id);
             service.delete(id);
             return "redirect:/subjects/index";
-
-
         }
 
-        @GetMapping ("/signup")
+        @GetMapping ("/subject/signup")
         public ModelAndView showSingUpForm(){
             Subject newSubject=new Subject();
             ModelAndView mav=new ModelAndView();
             mav.setViewName("/subjects/add-subject");
             mav.addObject("subject",newSubject);
-
             return mav;
         }
-
-
 
         @PostMapping("/subject/add-subject")
             public String addNewSubject(@Valid Subject subject, BindingResult result, Model model) {
@@ -76,6 +71,7 @@ public class SubjectsController {
                 service.saveOrUpdate(subject);
                 return "redirect:/subjects/index";
     }
+
 
 
 

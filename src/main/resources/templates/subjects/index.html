@@ -2,14 +2,16 @@
 <html lang="hu" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tantárgyak</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
 <div th:switch="${subjects}">
   <h2 th:case="null">Nincs még tantárgy az adatbázisban!</h2>
   <div th:case="*">
     <h2>Tantárgyak</h2>
-    <table>
+    <table class="table table-dark table-striped">
       <thead>
       <tr>
         <th>Azon.</th>
@@ -28,7 +30,7 @@
       </tbody>
     </table>
   </div>
-    <p> <a href="/signup">Add new subject</a> </p>
+    <p> <a href="/subject/signup">Add new subject</a> </p>
 </div>
 </body>
 </html>
