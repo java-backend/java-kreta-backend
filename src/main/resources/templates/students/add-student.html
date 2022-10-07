@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="hu"  xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8"  >
+    <title>Diák hozzáadása</title>
+</head>
+<body>
+<h2>Új diák hozzáadása</h2>
+
+<form action="#"
+      th:action="@{/student/add-student}"
+      th:object="${student}"
+      method="post">
+    <label for="id">Azon</label>
+    <input type="number" th:field="*{id}" id="id" placeholder="id">
+    <label for="fullName">Név</label>
+    <input type="text" th:field="*{fullName}" id="fullName" placeholder="Tanulo neve">
+    <label for="birthday">Név</label>
+    <input type="date" th:field="*{birthday}" id="birthday"placeholder="születési ideje">
+    <label for="isWoman">Neme</label>
+    <input type="checkbox" id="isWoman" th:checked="${isWoman}" />
+    <input type="submit" value="Tanuló hozzáadása">
+</form>
+
+</body>
+</html>
