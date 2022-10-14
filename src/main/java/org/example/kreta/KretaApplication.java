@@ -23,7 +23,7 @@ public class KretaApplication {
 
 	// https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
 	// http://localhost:8888/v2/api-docs
-	// http://localhost:8888/swagger-ui/
+	// http://localhost:8888/swagger-ui/index.html
 	@Configuration
 	@EnableSwagger2
 	@Import(SpringDataRestConfiguration.class)
