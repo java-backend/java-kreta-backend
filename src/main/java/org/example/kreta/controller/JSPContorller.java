@@ -13,6 +13,7 @@ public class JSPContorller {
         return "jsp/index";
     }
 
+    @RequestMapping(value="/welcome")
     public String welcome(Model model) {
         model.addAttribute("Kréta","kreta");
         return "jsp/welcome";

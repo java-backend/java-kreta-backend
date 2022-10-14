@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/th")
 public class ThymeleafController {
 
-    @RequestMapping(value = "index",name = "Thymeleaf web page home")
+    @RequestMapping(value={"","/","/index"},name = "Thymeleaf web page home")
     public String Index() {
         return "th/index";
     }
