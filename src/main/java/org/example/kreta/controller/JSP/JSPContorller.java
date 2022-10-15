@@ -1,4 +1,4 @@
-package org.example.kreta.controller;
+package org.example.kreta.controller.JSP;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

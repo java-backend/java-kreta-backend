@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<!--<head th:insert="fragments/head.html"> </head>-->
+<title>
+    Kréta
+</title>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <!--    <div th:replace="fragments/menu.html">-->
+    </div>
+</div>
+<div class="container">
+    <div class="hero-unit">
+        <h1>Spring fejlesztés - gyakorló kódok</h1>
+        <p>Spring, bootstrap, thymelaef, jsp, vue.</p>
+    </div>
+    <div>
+        <ul>
+            <li><a th:href="@{/th}">Tymleaf oldalak</a></li>
+        </ul>
+    </div>
+</div>
+<div th:replace="th/fragments/footer.html">&copy; 2016 The Static Templates</div>
+</body>
+</html>
