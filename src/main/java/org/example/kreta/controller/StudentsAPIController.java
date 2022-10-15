@@ -68,7 +68,8 @@ public class StudentsAPIController {
     // https://cloud.spring.io/spring-cloud-static/spring-cloud-openfeign/2.1.5.RELEASE/multi/multi_spring-cloud-feign.html#_feign_querymap_support
     // action: http://localhost:8888/api/student/parameters?currentPage=0&pageSize=5&orderBy=fullName
     @GetMapping("/student/parameters")
-    public ResponseEntity<PagedList<Student>> getAllStudentsParameterised(@SpringQueryMap QueryStringParameterDto queryStringParameterDto) throws JsonProcessingException {
+    public ResponseEntity<PagedList<Student>> getAllStudentsParameterised(
+            @SpringQueryMap QueryStringParameterDto queryStringParameterDto) throws JsonProcessingException {
         PagedList<Student> students= new PagedList<>();
         if (queryStringParameterDto.isPaging() && queryStringParameterDto.isSorting())
             students=studentsService.getAllStudents(queryStringParameterDto.getCurrentPage(),
@@ -76,6 +77,7 @@ public class StudentsAPIController {
                     queryStringParameterDto.getFilter());
         else if (queryStringParameterDto.isSorting()) {
             List<Student> listStudent = new ArrayList<Student>();
+            // Ezt még le kell kódolni
             students.setList(listStudent);
         }
         else if (queryStringParameterDto.isPaging()) {

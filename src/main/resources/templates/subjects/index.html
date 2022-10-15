@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="hu" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="/fragments/head.html"> </head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tantárgyak</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div th:replace="fragments/menu.html">
+  </div>
+</div>
 <div th:switch="${subjects}">
   <h2 th:case="null">Nincs még tantárgy az adatbázisban!</h2>
   <div th:case="*">
-    <h2>Tantárgyak</h2>
+    <h1>Tantárgyak</h1>
     <table class="table table-dark table-striped">
       <thead>
       <tr>
@@ -32,5 +34,6 @@
   </div>
     <p> <a href="/subject/signup">Add new subject</a> </p>
 </div>
+<div align="center" th:replace="/fragments/footer.html"></div>
 </body>
 </html>

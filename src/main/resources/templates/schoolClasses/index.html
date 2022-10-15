@@ -1,15 +1,20 @@
 <!DOCTYPE html >
 <html lang="hu" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="/fragments/head.html"> </head>
   <meta charset="UTF-8">
   <title>Osztályok</title>
 </head>
 <body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div th:replace="fragments/menu.html">
+  </div>
+</div>
+<h1>Osztályok</h1>
 <!-- https://www.baeldung.com/spring-boot-crud-thymeleaf -->
 <div th:switch="${schoolClasses}">
   <h2 th:case="null">Nincs még osztály az adatbázisban!</h2>
   <div th:case="*">
-    <h2>Osztályok</h2>
+
     <table>
       <thead>
       <tr>
@@ -35,7 +40,7 @@
   <p> <a href="/schoolClass/signup">Új osztály felvétele</a> </p>
 </div>
   </div>
-
+<div align="center" th:replace="/fragments/footer.html"></div>
 </div>
 
 </body>
