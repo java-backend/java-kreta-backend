@@ -22,7 +22,7 @@ public class StudentsController {
     @Autowired
     StudentsService service;
 
-    @GetMapping("/students/index")
+    @GetMapping("/student/index")
     public ModelAndView showStudentsList()
     {
         List<Student> students = service.getAllStudents();

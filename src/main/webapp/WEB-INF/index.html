@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="hu" xmlns:th="http://www.thymeleaf.org">
-<!--<head th:insert="fragments/head.html"> </head>-->
-<title>
-    Kréta
-</title>
+<head>
+    <th:block th:insert="/th/fragments/head.html"></th:block>
+    <title>Kréta</title>
+</head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
-    <!--    <div th:replace="fragments/menu.html">-->
-    </div>
 </div>
 <div class="container">
     <div class="hero-unit">
@@ -20,6 +18,6 @@
         </ul>
     </div>
 </div>
-<div th:replace="th/fragments/footer.html">&copy; 2016 The Static Templates</div>
+<div th:replace="/th/fragments/footer.html">&copy; Gyuris Csaba és Gyuris László Márton</div>
 </body>
 </html>

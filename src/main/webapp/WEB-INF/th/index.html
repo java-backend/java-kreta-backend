@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
-<meta charset="utf-8">
-    <head th:insert="th/fragments/head.html"> </head>
-<title>
-    Kréta
-</title>
+<head>
+    <th:block th:insert="/th/fragments/head.html"></th:block>
+    <title>Kréta</title>
+</head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div th:replace="th/fragments/menu.html">
+    <div th:replace="/th/fragments/menu.html">
     </div>
-</div>
-<div class="container">
-    <div class="hero-unit">
-        <h1>Kréta - iskolai aminisztáció</h1>
-        <p>Thymeleaf and Bootstrap 5</p>
+    <div class="container">
+        <div class="hero-unit">
+            <h1>Kréta - iskolai aminisztáció</h1>
+            <p>Thymeleaf and Bootstrap 5</p>
+        </div>
     </div>
-</div>
-<div align="center" th:replace="th/fragments/footer:: footer"></div>
+    <div th:replace="/th/fragments/footer.html">&copy; Gyuris Csaba és Gyuris László Márton</div>
 </body>
 </html>
