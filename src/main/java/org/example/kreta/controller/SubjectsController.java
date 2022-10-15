@@ -20,12 +20,13 @@ public class SubjectsController {
         @Autowired
         SubjectsService service;
 
-        @GetMapping("/subjects/index")
+        @GetMapping("/subject/index")
         public ModelAndView showSubjectList()
         {
             List<Subject> subjects = service.getAllSubjects();
             ModelAndView mav=new ModelAndView("subjects/index");
             mav.addObject("subjects",subjects);
+            mav.setViewName("th/subjects/index");
 
             return mav;
         }
@@ -34,45 +35,41 @@ public class SubjectsController {
         public String showUpdateForm (@PathVariable("id") long id, Model model){
            Subject subject = service.getSubjectById(id);
            model.addAttribute("subject", subject);
-           return "/subjects/update-subject";
+           return "th/subjects/update-subject";
         }
 
         @PostMapping("/subject/update/{id}")
         public String updateSubject(@PathVariable("id") Long id, @Valid Subject subject, BindingResult result, Model model) {
             if (result.hasErrors()){
                 subject.setId(id);
-                return "/subjects/update-subject";
+                return "th/subjects/update-subject";
             }
             service.saveOrUpdate(subject);
-            return "redirect:/subjects/index/";
+            return "redirect:/subject/index/";
         }
         @GetMapping("/subject/delete/{id}")
         public String deleteUser (@PathVariable("id") long id, Model model) {
             Subject subject = service.getSubjectById(id);
             service.delete(id);
-            return "redirect:/subjects/index";
+            return "redirect:/subject/index";
         }
 
         @GetMapping ("/subject/signup")
         public ModelAndView showSingUpForm(){
             Subject newSubject=new Subject();
             ModelAndView mav=new ModelAndView();
-            mav.setViewName("/subjects/add-subject");
+            mav.setViewName("th/subjects/add-subject");
             mav.addObject("subject",newSubject);
             return mav;
         }
 
         @PostMapping("/subject/add-subject")
-            public String addNewSubject(@Valid Subject subject, BindingResult result, Model model) {
-                if (result.hasErrors()) {
-                    return "/subject/add-subject";
-                }
+        public String addNewSubject(@Valid Subject subject, BindingResult result, Model model) {
+            if (result.hasErrors()) {
+                return "th/subject/add-subject";
+            }
 
-                service.saveOrUpdate(subject);
-                return "redirect:/subjects/index";
-    }
-
-
-
-
+            service.saveOrUpdate(subject);
+            return "redirect:/subject/index";
+        }
 }

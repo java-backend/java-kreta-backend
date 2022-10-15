@@ -11,16 +11,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/**");
+        //registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/**");
         registry.addResourceHandler("/templates/**").addResourceLocations("classpath:/templates/**");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry re) {
-
-        re.addViewController("/").setViewName("index.html");
-        re.addViewController("/welcome").setViewName("welcome.html");
-        re.addViewController("/tmp").setViewName("check.html");
+        re.addViewController("/hello").setViewName("hello.html");
     }
 }

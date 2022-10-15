@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <th:block th:insert="/th/fragments/head.html"></th:block>
+    <title>Tantárgyak</title>
+</head>
+<body>
+<div th:replace="/th/fragments/menu.html"></div>
+<div class="container">
+     <div class = "p-1 bg-info">
+        <div th:switch="${subjects}">
+            <h2 class="text-primary" th:case="null">Nincs még tantárgy az adatbázisban!</h2>
+               <div th:case="*">
+                   <h2 class="text-primary">Tantárgyak</h2>
+                   <table class="table table-dark table-striped">
+                      <thead>
+                          <tr>
+                            <th>Azon.</th>
+                            <th>Tantárgy</th>
+                            <th>Szerkesztés</th>
+                            <th>Törlés</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr th:each="subject: ${subjects}">
+                            <td th:text="${subject.id}"></td>
+                            <td th:text="${subject.subjectName}"></td>
+                            <td> <a class="btn btn-primary btn-xs" th:href="@{/subject/edit/{id}(id=${subject.id})}">Szerkesztés</a></td>
+                            <td> <a class="btn btn-danger btn-xs" th:href="@{/subject/delete/{id}(id=${subject.id})}">Törlés</a></td>
+                          </tr>
+                      </tbody>
+                    </table>
+              </div>
+            <p> <a class="btn btn-success btn-xs" th:href="@{/subject/signup}">Új tantárgy</a> </p>
+            <div th:replace="/th/fragments/footer.html">&copy; Gyuris Csaba és Gyuris László Márton</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

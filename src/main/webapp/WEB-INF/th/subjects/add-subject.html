@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <th:block th:insert="/th/fragments/head.html"></th:block>
+    <title>Tantárgy hozzáadás</title>
+</head>
+<body>
+<div th:replace="/th/fragments/menu.html"></div>
+<div class="container">
+    <div class = "p-1 bg-info">
+        <h2 class="text-primary">Új tantárgy hozzáadása</h2>
+        <form action="#"
+          th:action="@{/subject/add-subject}"
+          th:object="${subject}"
+          method="post">
+            <table class="table table-bordered">
+                <tr>
+                    <td><label for="id">Azon.</label></td>
+                    <td><input required class="form-control" type="number" th:field="*{id}" id="id" placeholder="Azonosító"></td>
+                </tr>
+                <tr>
+                    <td><label for="subjectName">Név</label></td>
+                    <td><input required class="form-control" type="text" th:field="*{subjectName}" id="subjectName" placeholder="Tantárgy neve"></td>
+                </tr>
+            </table>
+            <input class="btn btn-primary" type="submit" value="Tantárgy hozzáadása">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
