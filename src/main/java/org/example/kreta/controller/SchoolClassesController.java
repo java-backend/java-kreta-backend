@@ -29,7 +29,7 @@ public class SchoolClassesController {
         List<SchoolClass> schoolClasses = service.getAllSchoolClass();
         ModelAndView mav=new ModelAndView("schoolClasses/index");
         mav.addObject("schoolClasses",schoolClasses);
-
+        mav.setViewName("th/schoolClasses/index");
         return mav;
     }
 

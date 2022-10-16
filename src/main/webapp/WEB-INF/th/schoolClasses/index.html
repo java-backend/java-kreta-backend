@@ -1,16 +1,15 @@
 <!DOCTYPE html >
-<html lang="hu" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="/fragments/head.html"> </head>
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <th:block th:insert="/th/fragments/head.html"></th:block>
   <meta charset="UTF-8">
   <title>Osztályok</title>
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div th:replace="fragments/menu.html">
-  </div>
-</div>
+<div th:replace="/th/fragments/menu.html"></div>
+
 <h1>Osztályok</h1>
-<!-- https://www.baeldung.com/spring-boot-crud-thymeleaf -->
+<!--
 <div th:switch="${schoolClasses}">
   <h2 th:case="null">Nincs még osztály az adatbázisban!</h2>
   <div th:case="*">
@@ -32,7 +31,7 @@
         <td th:text="${schoolClass.teacherId}"></td>
         <td> <a th:href="@{/schoolClass/edit/{id}(id=${schoolClass.id})}">Edit</a></td>
         <td> <a th:href="@{/schoolClass/delete/{id}(id=${schoolClass.id})}">Delete</a></td>
-        <!-- https://www.baeldung.com/spring-thymeleaf-conditionals-->
+
       </tr>
       </tbody>
     </table>
@@ -41,6 +40,7 @@
 </div>
   </div>
 <div align="center" th:replace="/fragments/footer.html"></div>
+-->
 </div>
 
 </body>
