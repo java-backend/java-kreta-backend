@@ -23,7 +23,7 @@ public class SchoolClassesController {
     @Autowired
     SchoolClassesService service;
 
-    @GetMapping("/schoolClasses/index")
+    @GetMapping("/schoolClass/index")
     public ModelAndView showSchoolClassList()
     {
         List<SchoolClass> schoolClasses = service.getAllSchoolClass();

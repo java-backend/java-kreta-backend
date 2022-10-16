@@ -1,94 +1,75 @@
 package org.example.kreta.controller;
 
-import org.example.kreta.model.Student;
 import org.example.kreta.model.Subject;
 import org.example.kreta.service.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class SubjectsController {
 
         @Autowired
-        SubjectsService subjectsService;
+        SubjectsService service;
 
-        @GetMapping("/subjects/index")
+        @GetMapping("/subject/index")
         public ModelAndView showSubjectList()
         {
-            List<Subject> subjects = subjectsService.getAllSubjects();
+            List<Subject> subjects = service.getAllSubjects();
             ModelAndView mav=new ModelAndView("subjects/index");
             mav.addObject("subjects",subjects);
+            mav.setViewName("th/subjects/index");
 
             return mav;
         }
 
        @GetMapping("/subject/edit/{id}")
         public String showUpdateForm (@PathVariable("id") long id, Model model){
-           Subject subject = subjectsService.getSubjectById(id);
+           Subject subject = service.getSubjectById(id);
            model.addAttribute("subject", subject);
-           return "/subjects/update-subject";
+           return "th/subjects/update-subject";
         }
 
         @PostMapping("/subject/update/{id}")
         public String updateSubject(@PathVariable("id") Long id, @Valid Subject subject, BindingResult result, Model model) {
             if (result.hasErrors()){
                 subject.setId(id);
-                return "/subjects/update-subject";
+                return "th/subjects/update-subject";
             }
-            subjectsService.saveOrUpdate(subject);
-            return "redirect:/subjects/index/";
+            service.saveOrUpdate(subject);
+            return "redirect:/subject/index/";
         }
         @GetMapping("/subject/delete/{id}")
         public String deleteUser (@PathVariable("id") long id, Model model) {
-            Subject subject = subjectsService.getSubjectById(id);
-            subjectsService.delete(id);
-            return "redirect:/subjects/index";
+            Subject subject = service.getSubjectById(id);
+            service.delete(id);
+            return "redirect:/subject/index";
         }
 
         @GetMapping ("/subject/signup")
         public ModelAndView showSingUpForm(){
             Subject newSubject=new Subject();
             ModelAndView mav=new ModelAndView();
-            mav.setViewName("/subjects/add-subject");
+            mav.setViewName("th/subjects/add-subject");
             mav.addObject("subject",newSubject);
             return mav;
         }
 
         @PostMapping("/subject/add-subject")
-            public String addNewSubject(@Valid Subject subject, BindingResult result, Model model) {
-                if (result.hasErrors()) {
-                    return "/subject/add-subject";
-                }
+        public String addNewSubject(@Valid Subject subject, BindingResult result, Model model) {
+            if (result.hasErrors()) {
+                return "th/subject/add-subject";
+            }
 
-                subjectsService.saveOrUpdate(subject);
-                return "redirect:/subjects/index";
-    }
-
-
-  /*  @RequestMapping(value = "/listSubjects", method = RequestMethod.GET)
-    public String listSubjects(
-            Model model,
-            @RequestParam("page")Optional<Integer> page,
-            @RequestParam("size")Optional<Integer> size {
-                int currentPage = page.orElse(1);
-                int pageSize = size.orElse(5);
-               Page<Subject> studentPage = subjectsService.getAllSubjects(PageRequest.of(currentPage-1,pageSize));
-               / model
-                }
-            )*/
-
-
-
-
-
-
+            service.saveOrUpdate(subject);
+            return "redirect:/subject/index";
+        }
 }

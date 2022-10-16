@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="/th/fragments/head.html"></th:block>
+    <title>Kréta</title>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+</div>
+<div class="container">
+    <div class="hero-unit">
+        <h1>Spring fejlesztés - gyakorló kódok</h1>
+        <p>Spring, bootstrap, thymelaef, jsp, vue.</p>
+    </div>
+    <div>
+        <ul>
+            <li><a th:href="@{/th}">Tymleaf oldalak</a></li>
+        </ul>
+    </div>
+</div>
+<div th:replace="/th/fragments/footer.html">&copy; Gyuris Csaba és Gyuris László Márton</div>
+</body>
+</html>
