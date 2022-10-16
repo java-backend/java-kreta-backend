@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/head.html"> </head>
+  <meta charset="UTF-8">
+  <title>Tantárgyak</title>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div th:replace="fragments/menu.html">
+  </div>
+</div>
+<div th:switch="${subjects}">
+  <h2 th:case="null">Nincs még tantárgy az adatbázisban!</h2>
+  <div th:case="*">
+    <h1>Tantárgyak</h1>
+    <table class="table table-dark table-striped">
+      <thead>
+      <tr>
+        <th>Azon.</th>
+        <th>Tantárgy</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="subject: ${subjects}">
+        <td th:text="${subject.id}"></td>
+        <td th:text="${subject.subjectName}"></td>
+        <td> <a th:href="@{/subject/edit/{id}(id=${subject.id})}">Edit</a></td>
+        <td> <a th:href="@{/subject/delete/{id}(id=${subject.id})}">Delete</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+    <p> <a href="/subject/signup">Add new subject</a> </p>
+</div>
+<div align="center" th:replace="/fragments/footer.html"></div>
+</body>
+</html>

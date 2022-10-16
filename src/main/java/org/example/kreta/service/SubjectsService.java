@@ -1,8 +1,13 @@
 package org.example.kreta.service;
 
 import org.example.kreta.model.Subject;
-import org.example.kreta.repo.SubjectRepository;
+import org.example.kreta.model.generic.PagedList;
+import org.example.kreta.repo.interfaces.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -37,5 +42,33 @@ public class SubjectsService {
 
     public void update(Subject subject, Long id) {
         subjectRepository.save(subject);
+    }
+
+
+    public PagedList<Subject> getAllSubjects(Integer pageNo, Integer pageSize, String sortBy) {
+        Pageable paging;
+        if (sortBy!=null)
+            paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+        else
+            paging = PageRequest.of(pageNo, pageSize);
+        Page<Subject> pagedResult = subjectRepository.findAll(paging);
+        PagedList<Subject> pagedList = new PagedList<Subject>();
+
+        if (pagedResult.hasContent()) {
+            pagedList.setList(pagedResult.getContent());
+
+            pagedList.setCurrentPage(paging.getPageNumber());
+            pagedList.setPageSize(pageSize);
+            int numberOfPage=(int) Math.floor(subjectRepository.count()/pageSize)+1;
+            pagedList.setNumberOfPage(numberOfPage);
+            pagedList.setNumberOfItem(subjectRepository.count());
+        }
+        else {
+            pagedList.setCurrentPage(paging.getPageNumber());
+            pagedList.setPageSize(pageSize);
+            pagedList.setNumberOfPage(0);
+            pagedList.setNumberOfItem(subjectRepository.count());
+        }
+        return pagedList;
     }
 }
