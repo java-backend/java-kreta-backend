@@ -71,10 +71,10 @@ public class SchoolClassesController {
     @PostMapping("/schoolClass/add-schoolClass")
     public String addNewSchoolClass(@Valid SchoolClass schoolClass, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "/schoolClass/add-schoolClass";
+            return "th/schoolClasses/index";
         }
 
         service.saveOrUpdate(schoolClass);
-        return "redirect:/schoolClasses/index";
+        return "th/schoolClasses/index";
     }
 }
