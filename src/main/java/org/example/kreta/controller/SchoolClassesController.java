@@ -75,6 +75,6 @@ public class SchoolClassesController {
         }
 
         service.saveOrUpdate(schoolClass);
-        return "th/schoolClasses/index";
+        return "redirect:/schoolClass/index";
     }
 }
