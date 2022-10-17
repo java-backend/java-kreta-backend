@@ -12,12 +12,13 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/**");
-        registry.addResourceHandler("/templates/**").addResourceLocations("classpath:/templates/**");
+        //registry.addResourceHandler("/templates/**").addResourceLocations("classpath:/templates/**");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry re) {
-        re.addViewController("/hello").setViewName("hello.html");
+        //re.addViewController("/hello").setViewName("hello.html");
     }
 }
