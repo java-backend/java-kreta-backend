@@ -62,7 +62,7 @@ public class SchoolClassesController {
     public ModelAndView showSingUpForm(){
         SchoolClass newSchoolClass=new SchoolClass();
         ModelAndView mav=new ModelAndView();
-        mav.setViewName("/schoolClasses/add-schoolClass");
+        mav.setViewName("/th/schoolClasses/add-schoolClass");
         mav.addObject("schoolClass",newSchoolClass);
 
         return mav;
