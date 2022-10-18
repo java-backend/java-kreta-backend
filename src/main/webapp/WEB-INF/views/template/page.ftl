@@ -1,5 +1,5 @@
 <!-- https://stackoverflow.com/questions/36428710/how-can-i-correctly-import-an-header-and-a-footer-page-into-a-freemarker-page -->
-<#macro standardPage title="">
+<#macro pageHeadFooter title>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -10,11 +10,17 @@
     <script type="text/javascript" src="/webjars/popper.js/2.9.3/umd/popper.min.js"></script>
 </head>
 <body>
-    <#include "header.ftl">    
-
+    <#include "head.ftl">
     <#nested/>
-
     <#include "footer.ftl">    
 </body>
 </html>
+</#macro>
+
+<#macro pageHeadMenuFooter title>
+<#assign newTitle>${title}</#assign>
+<@pageHeadFooter title=newTitle>
+<#include "menu.ftl">
+<#nested/>
+</@pageHeadFooter>
 </#macro>

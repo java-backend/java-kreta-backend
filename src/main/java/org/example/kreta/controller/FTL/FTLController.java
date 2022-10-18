@@ -11,7 +11,7 @@ import java.util.Map;
 public class FTLController {
     private static final String kreta = "Kréta";
 
-    @RequestMapping(value={"","/","/index"},name = "FreeMarker home page")
+    @RequestMapping(value={"","/","/index"},name = "FreeMarker - Kréta home page")
     public String Index() {
         return "index";
     }
@@ -20,5 +20,11 @@ public class FTLController {
     public String hello(Map<String, Object> model) {
         model.put("message", kreta);
         return "welcome";
+    }
+
+    @GetMapping(value = "/ftlhome",name = "FreeMarker welcome page")
+    public String ftlHome(Map<String, Object> model) {
+        model.put("message", kreta);
+        return "index3";
     }
 }

@@ -1,8 +1,10 @@
-<#import "/spring.ftl" as spring />
-<!doctype html>
-<html lang="hu">
-<head>
-<#include "head.ftl"/>
-<title>Kréta - iskolai adminisztráció</title>
-</head>
-<body>
+<#include "/template/page.ftl"/>
+
+<@pageHeadMenuFooter title="Kréta - iskolai adminisztráció">
+    <div class="container">
+        <div class="hero-unit">
+            <h1>Kréta - iskolai aminisztáció</h1>
+            <p>Freemarker and Bootstrap</p>
+        </div>
+    </div>
+ </@pageHeadMenuFooter>
