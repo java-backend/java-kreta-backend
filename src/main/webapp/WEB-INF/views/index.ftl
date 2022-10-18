@@ -1,11 +1,8 @@
-<#include "standardPage.ftl" />
-<!-- https://github.com/ahmadfajar/JPACrud-SpringMVC -->
-
-<@standardPage title="Home">
-    <div class="container">
-        <div class="hero-unit">
-            <h1>Kréta - iskolai aminisztáció</h1>
-            <p>Thymeleaf and Bootstrap 5</p>
-        </div>
-    </div>
- </@standardPage>
+<#import "/spring.ftl" as spring />
+<!doctype html>
+<html lang="hu">
+<head>
+<#include "head.ftl"/>
+<title>Kréta - iskolai adminisztráció</title>
+</head>
+<body>
