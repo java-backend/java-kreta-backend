@@ -1,26 +1,63 @@
 <!DOCTYPE html>
-<html lang="hu"  xmlns:th="http://www.thymleaf.org">
+<html lang="hu"  xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8"  >
-    <title>Diák hozzáadása</title>
+    <th:block th:insert="/th/fragments/head.html"></th:block>
+    <meta charset="UTF-8">
+    <title>Új diák felvétele</title>
 </head>
 <body>
-<h2>Új diák hozzáadása</h2>
+<div th:replace="/th/fragments/menu.html"></div>
+<div class="container">
+    <div class = "p-1 bg-info">
+        <h2 class="text-primary">Új diák hozzáadása</h2>
+        <form action="#"
+              th:action="@{/student/add-student}"
+              th:object="${student}"
+              method="post">
+            <table class="table table-bordered">
+                <tr>
+                    <td><label for="id">Diák azonosító.</label></td>
+                    <td><input required class="form-control" type="number" th:field="*{id}" id="id" placeholder="Azon."></td>
+                </tr>
+                <tr>
+                    <td><label for="fullName">Teljes név.</label></td>
+                    <td><input required class="form-control" type="text" th:field="*{fullName}" id="fullName" placeholder="Név"></td>
+                </tr>
+                <tr>
+                    <td><label for="birthday">Születési dátum</label></td>
+                    <td><input required class="form-control" type="date" th:field="*{birthday}" id="birthday" placeholder="Szület.dát."></td>
+                </tr>
 
-<form action="#"
-      th:action="@{/student/add-student}"
-      th:object="${student}"
-      method="post">
-    <label for="id">Azon</label>
-    <input type="number" th:field="*{id}" id="id" placeholder="id">
-    <label for="fullName">Név</label>
-    <input type="text" th:field="*{fullName}" id="fullName" placeholder="Tanulo neve">
-    <label for="birthday">Név</label>
-    <input type="date" th:field="*{birthday}" id="birthday"placeholder="születési ideje">
-    <label for="isWoman">Neme</label>
-    <input type="checkbox" id="isWoman" th:checked="${isWoman}" />
-    <input type="submit" value="Tanuló hozzáadása">
-</form>
+                <tr>
+                    <td><label for="isWoman">Nő</label></td>
+                    <td><input type="checkbox" name="isWoman" th:field="*{isWoman}" id="isWoman"></td>
+                </tr>
+                <!---->
+                <!--
+                <tr>
+                    <td></td>
+                    <td>
+                    <select name="isWoman" id="isWoman">
+                        <option value="">Select gender from the list</option>
+                        <option value="false" th:selected="*{isWoman eq true}">Nő</option>
+                        <option value="true" th:selected="${isWoman eq false}">Férgi</option>
+                    </select>
+                    </td>
+                </tr>
 
+                <tr>
+                    <td><label for="isWoman">Nő</label></td>
+                    <td><input required class="form-check-input" type="radio" value="true" th:field="*{isWoman}" name="isWoman"  th:checked="*{isWoman eq true}" id="isWoman"></td>
+                </tr>
+                <tr>
+                    <td><label for="isMan">Férfi</label></td>
+                    <td><input required class="form-check-input" type="radio" value="false" th:field="*{isWoman}" name="isWoman"  th:checked="*{isWoman eq false}"  id="isMan"></td>
+                </tr>
+ -->
+            </table>
+            <input class="btn btn-primary" type="submit" value="Diák hozzáadása">
+        </form>
+    </div>
+</div>
 </body>
 </html>

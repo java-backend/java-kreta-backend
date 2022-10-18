@@ -26,7 +26,7 @@ public class StudentsController {
     public ModelAndView showStudentsList()
     {
         List<Student> students = service.getAllStudents();
-        ModelAndView mav=new ModelAndView("students/index");
+        ModelAndView mav=new ModelAndView("th/students/index");
         mav.addObject("students",students);
 
         return mav;
@@ -78,21 +78,22 @@ public class StudentsController {
     public ModelAndView showSingUpForm(){
         Student nevStudent=new Student();
         ModelAndView mav=new ModelAndView();
-        mav.setViewName("/students/add-student");
+        mav.setViewName("/th/students/add-student");
         mav.addObject("student",nevStudent);
         return mav;
     }
 
     @PostMapping("/student/add-student")
     public String addNewStudent(@Valid Student student, BindingResult result, Model model)  {
-       /* if (result.hasErrors()) {
-            return "/students/add-student";
+       /* ha jó a dátum akkor mehet
+        if (result.hasErrors()) {
+            return "th/students/add-student";
         }*/
         try {
             service.saveOrUpdate(student);
         }catch (RecordNotFoundException exception){
-            return "redirect:/students/index/";
+            return "redirect:/student/index/";
         }
-        return "redirect:/students/index";
+        return "redirect:/student/index";
     }
 }
