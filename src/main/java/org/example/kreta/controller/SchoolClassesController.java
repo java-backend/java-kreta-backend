@@ -37,24 +37,24 @@ public class SchoolClassesController {
     public String showUpdateForm (@PathVariable("id") long id, Model model){
         SchoolClass schoolClass = service.getSchoolClassByID(id);
         model.addAttribute("schoolClass", schoolClass);
-        return "/schoolClasses/update-schoolClass";
+        return "th/schoolClasses/update-schoolClass";
     }
 
     @PostMapping("/schoolClass/update/{id}")
     public String updateSchoolClass(@PathVariable("id") Long id, @Valid SchoolClass schoolClass, BindingResult result, Model model) {
         if (result.hasErrors()){
             schoolClass.setId(id);
-            return "/schoolClasses/update-schoolClass";
+            return "th/schoolClasses/update-schoolClass";
         }
         service.saveOrUpdate(schoolClass);
-        return "redirect:/schoolClasses/index/";
+        return "redirect:/schoolClass/index/";
     }
 
     @GetMapping("/schoolClass/delete/{id}")
     public String deleteUser (@PathVariable("id") long id, Model model) {
         SchoolClass schoolClass = service.getSchoolClassByID(id);
         service.delete(id);
-        return "redirect:/schoolClasses/index";
+        return "redirect:/schoolClass/index";
 
 
     }
@@ -62,7 +62,7 @@ public class SchoolClassesController {
     public ModelAndView showSingUpForm(){
         SchoolClass newSchoolClass=new SchoolClass();
         ModelAndView mav=new ModelAndView();
-        mav.setViewName("/schoolClasses/add-schoolClass");
+        mav.setViewName("/th/schoolClasses/add-schoolClass");
         mav.addObject("schoolClass",newSchoolClass);
 
         return mav;
@@ -71,10 +71,10 @@ public class SchoolClassesController {
     @PostMapping("/schoolClass/add-schoolClass")
     public String addNewSchoolClass(@Valid SchoolClass schoolClass, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "/schoolClass/add-schoolClass";
+            return "th/schoolClasses/index";
         }
 
         service.saveOrUpdate(schoolClass);
-        return "redirect:/schoolClasses/index";
+        return "redirect:/schoolClass/index";
     }
 }

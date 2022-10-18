@@ -1,27 +1,41 @@
 <!DOCTYPE html>
-<html lang="hu" xmlns:th="http://www.thymleaf.org">
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Új osztály felvétele</title>
+  <meta charset="UTF-8">
+  <th:block th:insert="/th/fragments/head.html"></th:block>
+  <title>Új osztály felvétele</title>
 </head>
 <body>
-<h2>Új osztály hozzáadása</h2>
-
-
-<form action="#"
-      th:action="@{/schoolClass/add-schoolClass}"
-      th:object="${schoolClass}"
-      method="post">
-  <label for="id">Azon</label>
-  <input type="number" th:field="*{id}" id="id" placeholder="id">
-  <label for="schoolClass">Évfolyam</label>
-  <input type="number" th:field="*{schoolClass}" id="schoolClass" placeholder="Évfolyam">
-    <label for="classType">Osztály</label>
-    <input type="text" th:field="*{classType}" id="classType" maxlength="1"  placeholder="Osztály">
-    <label for="id">Tanár azonosító</label>
-    <input type="number" th:field="*{teacherId}" id="teacherId" placeholder="Tanár azon.">
-  <input type="submit" value="Osztály hozzáadása">
-</form>
-
+<div th:replace="/th/fragments/menu.html"></div>
+<div class="container">
+  <div class = "p-1 bg-info">
+    <h2 class="text-primary">Új osztály hozzáadása</h2>
+    <form action="#"
+          th:action="@{/schoolClass/add-schoolClass}"
+          th:object="${schoolClass}"
+          method="post">
+      <table class="table table-bordered">
+        <tr>
+          <td><label for="id">Osztály azonosító.</label></td>
+          <td><input required class="form-control" type="number" th:field="*{id}" id="id" placeholder="Azonosító"></td>
+        </tr>
+        <tr>
+          <td><label for="schoolClass">Évfolam</label></td>
+          <td><input required class="form-control" type="number" th:field="*{schoolClass}" id="schoolClass" placeholder="Évfolyam"></td>
+        </tr>
+        <tr>
+          <td><label for="classType">Osztály</label></td>
+          <td><input required class="form-control" type="text" th:field="*{classType}" id="classType" maxlength="1" placeholder="Osztály"></td>
+        </tr>
+        <tr>
+          <td><label for="teacherId">Tanár azonosító</label></td>
+          <td><input required class="form-control" type="number" th:field="*{teacherId}" id="teacherId"  placeholder="Tanár azon"></td>
+        </tr>
+      </table>
+      <input class="btn btn-primary" type="submit" value="Osztály hozzáadása">
+    </form>
+  </div>
+</div>
+<div th:replace="/th/fragments/footer.html">&copy; Gyuris Csaba és Gyuris László Márton</div>
 </body>
 </html>

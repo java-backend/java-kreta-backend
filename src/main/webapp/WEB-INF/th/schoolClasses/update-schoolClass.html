@@ -1,29 +1,55 @@
 <!DOCTYPE html>
-<html lang="hu"  xmlns:th="http://www.thymeleaf.org">
+<html lang="hu"  xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+  <th:block th:insert="/th/fragments/head.html"></th:block>
+    <title>Osztályok szerkeztése</title>
 </head>
 <body>
-
-<h1>Osztály szerkesztése</h1>
-<form class=" form-inline" action="#"
-      th:action="@{/schoolClass/update/{id}(id=${schoolClass.id})}"
-      th:object="${schoolClass}"
-      method="post">
-  <label for="id">Azonosító</label>
-  <input type="number" th:field="*{id}" id="id" placeholder="Azon" disabled="disabled">
-  <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
-  <label for="schoolClass">Évfolyam</label>
-  <input type="number" th:field="*{schoolClass}" id="schoolClass" placeholder="Évfolyam">
-  <span th:if="${#fields.hasErrors('schoolClass')}" th:errors="*{schoolClass}"></span>
-  <label for="classType">Osztály</label>
-  <input type="text" th:field="*{classType}" id="classType" maxlength="1" placeholder="Osztály">
-  <span th:if="${#fields.hasErrors('classType')}" th:errors="*{classType}"></span>
-  <label for="teacherId">Tanár azon</label>
-  <input type="number" th:field="*{teacherId}" id="teacherId" placeholder="teacherId">
-  <span th:if="${#fields.hasErrors('teacherId')}" th:errors="*{teacherId}"></span>
-  <input type="submit" value="Update Subject">
-</form>
+<div th:replace="/th/fragments/menu.html"></div>
+<div class="container">
+  <div class = "p-1 bg-info">
+    <h2 class="text-primary">Osztály szerkesztése</h2>
+      <form class=" form-inline" action="#"
+            th:action="@{/schoolClass/update/{id}(id=${schoolClass.id})}"
+            th:object="${schoolClass}"
+            method="post">
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label" for="id">Azonosító.</label>
+                  <div class="col-sm-6">
+                    <input type="number" th:field="*{id}" id="id" placeholder="Azonosító" disabled="disabled">
+                    <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label" for="schoolClass">Évfolyam</label>
+                  <div class="col-sm-6">
+                    <input type="number" th:field="*{schoolClass}" id="schoolClass" placeholder="Évfolyam">
+                    <span th:if="${#fields.hasErrors('schoolClass')}" th:errors="*{schoolClass}"></span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label" for="classType">Osztály</label>
+                  <div class="col-sm-6">
+                    <input type="text" th:field="*{classType}" id="classType" maxlength="1" placeholder="Osztály">
+                    <span th:if="${#fields.hasErrors('classType')}" th:errors="*{classType}"></span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label" for="teacherId">Tanár azonoító</label>
+                  <div class="col-sm-6">
+                    <input type="number" th:field="*{teacherId}" id="teacherId" placeholder="Tanár azon">
+                    <span th:if="${#fields.hasErrors('teacherId')}" th:errors="*{teacherId}"></span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <input class="btn btn-primary" type="submit" value="Osztály módosítása">
+                  </div>
+                </div>
+      </form>
+  </div>
+</div>
+<div th:replace="/th/fragments/footer.html">&copy; Gyuris Csaba és Gyuris László Márton</div>
 </body>
 </html>

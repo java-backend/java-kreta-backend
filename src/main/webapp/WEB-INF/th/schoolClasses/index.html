@@ -8,38 +8,41 @@
 <body>
 <div th:replace="/th/fragments/menu.html"></div>
 
-<h1>Osztályok</h1>
+<h1 class="h1">Osztályok</h1>
+<div class="container">
+  <div class = "p-1 bg-info">
+    <div th:switch="${schoolClasses}">
+      <h2 class="text-primary" th:case="null">Nincs még osztály az adatbázisban!</h2>
+        <div th:case="*">
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th>Azon.</th>
+                <th>Évfolyam</th>
+                <th>Osztály</th>
+                <th>TanárAzon</th>
+                <th>Szerkesztés</th>
+                <th>Törlés</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr th:each="schoolClass: ${schoolClasses}">
+                <td th:text="${schoolClass.id}"></td>
+                <td th:text="${schoolClass.schoolClass}"></td>
+                <td th:text="${schoolClass.classType}"></td>
+                <td th:text="${schoolClass.teacherId}"></td>
+                <td> <a class="btn btn-primary btn-xs" th:href="@{/schoolClass/edit/{id}(id=${schoolClass.id})}">Edit</a></td>
+                <td> <a class="btn btn-danger btn-xs" th:href="@{/schoolClass/delete/{id}(id=${schoolClass.id})}">Delete</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <p> <a class="btn btn-success btn-xs" href="/schoolClass/signup">Új osztály felvétele</a> </p>
+    </div>
+  </div>
+<div th:replace="/th/fragments/footer.html">&copy; Gyuris Csaba és Gyuris László Márton</div>
 <!--
-<div th:switch="${schoolClasses}">
-  <h2 th:case="null">Nincs még osztály az adatbázisban!</h2>
-  <div th:case="*">
-
-    <table>
-      <thead>
-      <tr>
-        <th>Azon.</th>
-        <th>Évfolyam</th>
-        <th>Osztály</th>
-        <th>TanárAzon</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="schoolClass: ${schoolClasses}">
-        <td th:text="${schoolClass.id}"></td>
-        <td th:text="${schoolClass.schoolClass}"></td>
-        <td th:text="${schoolClass.classType}"></td>
-        <td th:text="${schoolClass.teacherId}"></td>
-        <td> <a th:href="@{/schoolClass/edit/{id}(id=${schoolClass.id})}">Edit</a></td>
-        <td> <a th:href="@{/schoolClass/delete/{id}(id=${schoolClass.id})}">Delete</a></td>
-
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <p> <a href="/schoolClass/signup">Új osztály felvétele</a> </p>
-</div>
-  </div>
-<div align="center" th:replace="/fragments/footer.html"></div>
 -->
 </div>
 

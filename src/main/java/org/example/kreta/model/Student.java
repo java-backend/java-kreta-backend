@@ -13,14 +13,15 @@ import java.util.Date;
 
 //https://www.baeldung.com/intro-to-project-lombok
 
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
+
 
 // https://www.baeldung.com/jpa-entities
 @Entity
 @Table(name="student")
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student extends ModelWithIdAndAnnotation {
     @NotBlank(message = "Name is mandatory")
     @Column(name="name", length=30, nullable=false, unique=false)
@@ -30,6 +31,15 @@ public class Student extends ModelWithIdAndAnnotation {
     private Date birthday;
     @Column(name = "iswoman",nullable = false,unique = false)
     private boolean isWoman;
+
+    public boolean getIsWoman(){
+        return isWoman;
+    }
+
+    public void setWoman(boolean isWoman)
+    {
+        this.isWoman=isWoman;
+    }
 
     @Override
     public String toString() {
