@@ -11,12 +11,12 @@ public class ThymeleafController {
 
     @RequestMapping(value={"","/","/index"},name = "Thymeleaf web page home")
     public String Index() {
-        return "th/index";
+        return "th/home/th/index";
     }
 
-    @RequestMapping(value = "welcome",name = "Thymeleaf welcame web page home")
+    @RequestMapping(value = "welcome",name = "Thymeleaf welcome web page")
     public String Welcome(Model model) {
         model.addAttribute("kreta","Kréta");
-        return "th/welcome";
+        return "th/home/th/welcome";
     }
 }

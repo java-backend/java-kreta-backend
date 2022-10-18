@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WellcomeController {
     @RequestMapping(value={"","/","/index"},name = "The main page")
     public String index() {
-        return "index";
+        return "th/home/index";
     }
 }
