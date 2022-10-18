@@ -24,7 +24,7 @@
 <#macro page title>
 <#assign newTitle>${title}</#assign>
 <@pageHeadMenuFooter title=newTitle>
-<h1>${title}>
+<h1>${title}</h1>
 <#nested/>
 </@pageHeadMenuFooter>
 </#macro>

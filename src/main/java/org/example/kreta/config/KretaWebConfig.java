@@ -11,6 +11,8 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import java.util.Properties;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan
@@ -59,10 +61,16 @@ public class KretaWebConfig extends WebMvcConfigurationSupport {
 
     @Bean
     public FreeMarkerViewResolver freemarkerViewResolver() {
+        Properties properties = new Properties();
+        properties.setProperty("auto_import", "spring.ftl as spring");
         FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+        resolver.setExposeSpringMacroHelpers(true);
+        resolver.setExposeRequestAttributes(true);
         resolver.setCache(true);
         resolver.setPrefix("");
         resolver.setSuffix(".ftl");
+        resolver.setContentType("text/html;charset=UTF-8");
+        //resolver.setViewNames(new String[] {"subjects"});
         return resolver;
     }
 
@@ -70,7 +78,6 @@ public class KretaWebConfig extends WebMvcConfigurationSupport {
     public FreeMarkerConfigurer freemarkerConfig() {
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
         freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/");
-        //freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/template");
         return freeMarkerConfigurer;
     }
 }

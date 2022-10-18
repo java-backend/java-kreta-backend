@@ -16,13 +16,13 @@ public class FTLController {
         return "index";
     }
 
-    @GetMapping(value = "/welcome",name = "FreeMarker welcome page")
+    @RequestMapping(value = "/welcome",name = "FreeMarker welcome page")
     public String hello(Map<String, Object> model) {
         model.put("message", kreta);
         return "welcome";
     }
 
-    @GetMapping(value = "/ftlhome",name = "FreeMarker welcome page")
+    @RequestMapping(value = "/ftlhome",name = "FreeMarker welcome page")
     public String ftlHome(Map<String, Object> model) {
         model.put("message", kreta);
         return "index3";

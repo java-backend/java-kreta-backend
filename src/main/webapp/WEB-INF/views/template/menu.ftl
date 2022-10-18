@@ -1,7 +1,8 @@
+<#import "/spring.ftl" as spring />
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="menu" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/index}">Kréta</a>
-        <a class="navbar-brand" th:href="@{/th/index}">Home</a>
+        <a class="navbar-brand" href="/index">Kréta</a>
+        <a class="navbar-brand" href="<@spring.url "/index"/>">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -12,7 +13,7 @@
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Adatkezelés</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/ftl/subjects/index">Tantárgyak</a>
+                        <a class="dropdown-item" href="<@spring.url "/ftl/subject/index"/>">Tantárgyak</a>
                         <a class="dropdown-item" ref="#">Osztályok</a>
                         <a class="dropdown-item" ref="#">Diákok</a>
                         <div class="dropdown-divider"></div>
