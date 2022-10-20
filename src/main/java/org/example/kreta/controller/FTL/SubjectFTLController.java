@@ -21,6 +21,7 @@ public class SubjectFTLController {
     public String index(Model model) {
         List<Subject> subjects=service.getAllSubjects();
         model.addAttribute("numberOfSubject",subjects.size());
+        model.addAttribute("subjects" , subjects);
         return "subjects/index";
     }
 }

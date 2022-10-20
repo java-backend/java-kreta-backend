@@ -1,5 +1,5 @@
 <#import "/spring.ftl" as spring />
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="menu" xmlns:th="http://www.w3.org/1999/xhtml">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"  xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="container-fluid">
         <a class="navbar-brand" href="/index">Kréta</a>
         <a class="navbar-brand" href="<@spring.url "/index"/>">Home</a>
