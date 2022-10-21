@@ -6,7 +6,7 @@
 <!-- https://github.com/alanshaw/pagination-freemarker-macros/blob/master/pagination.ftl -->
 <@pageWithContainer title="Tantárgyak">
 
-  <@numberOfItems number=numberOfItems name="tantárgy">
+  <@numberOfItems number=numberOfSubject name="tantárgy">
 
 
                    <table class="table table-dark table-striped">
@@ -27,7 +27,7 @@
 
                       </table>
                       
-  </@numberOfItems>                    
+  </@numberOfItems>                  
                       
                     
                       <@newItemButtan link="awdw" name="tantárgy" />
