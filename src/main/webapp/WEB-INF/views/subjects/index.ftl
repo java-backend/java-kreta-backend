@@ -18,19 +18,24 @@
                             <th>Törlés</th>
                           </tr>
                       </thead>
+                        <tbody>
+                        
                         <#list subjects as subject>
-                        <tr>
-                            <td>${subject.id}</td>
-                            <td>${subject.name}</td>
-                        </tr>
+                          <tr>
+                              <td>${subject.id}</td>
+                              <td>${subject.subjectName}</td>
+                              <td> <a class="btn btn-primary btn-xs" href="/ftl/subject/edit/${subject.id}">Szerkesztés</a></td>
+                              <td> <a class="btn btn-primary btn-xs" href="/ftl/subject/delete/${subject.id}">Törlés</a></td>
+                          </tr>
                         </#list>
-
+                       
+                         </tbody>
                       </table>
                       
   </@numberOfItems>                  
                       
                     
-                      <@newItemButtan link="awdw" name="tantárgy" />
+                      <@newItemButtan link="/ftl/subject/signup" name="tantárgy" />
 
 
 
