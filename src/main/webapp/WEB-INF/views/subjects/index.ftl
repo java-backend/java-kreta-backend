@@ -22,7 +22,7 @@
                         
                         <#list subjects as subject>
                           <tr>
-                              <td>${subject.id}</td>
+                              <td><a href="/ftl/subject/view/${subject.id}">${subject.id}</a></td>
                               <td>${subject.subjectName}</td>
                               <td> <a class="btn btn-primary btn-xs" href="/ftl/subject/edit/${subject.id}">Szerkesztés</a></td>
                               <td> <a class="btn btn-primary btn-xs" href="/ftl/subject/delete/${subject.id}">Törlés</a></td>

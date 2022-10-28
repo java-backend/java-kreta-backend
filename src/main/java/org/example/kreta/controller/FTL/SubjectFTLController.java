@@ -66,4 +66,11 @@ public class SubjectFTLController {
         service.saveOrUpdate(subject);
         return "redirect:/ftl/subject/index";
     }
+
+    @GetMapping ("subject/view/{id}")
+    public String viewSubject(@PathVariable("id") long id, Model model){
+        Subject subject = service.getSubjectById(id);
+        model.addAttribute("subject", subject);
+        return "subjects/view-subject";
+    }
 }
