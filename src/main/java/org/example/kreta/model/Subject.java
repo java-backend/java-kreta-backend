@@ -4,14 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.example.kreta.model.baseclass.ModelWithIdAndAnnotation;
 import java.util.Date;
 
 @Entity
 @Table (name="subject")
-public class Subject {
-    @Id
+public class Subject extends ModelWithIdAndAnnotation {
+   /* @Id
     @Column (name = "id", nullable = false)
-    private long id;
+    private long id; */
     @Column (name="name", length = 30, nullable = false, unique = false)
     private String subjectName;
 

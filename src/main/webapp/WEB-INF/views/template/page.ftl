@@ -28,3 +28,16 @@
 <#nested/>
 </@pageHeadMenuFooter>
 </#macro>
+
+<#macro pageWithContainer title>
+<#assign newTitle>${title}</#assign>
+<@page title=newTitle>
+<div class="container">
+     <div class = "p-1 bg-info">
+     <#nested>
+     </div>
+</div>
+
+
+</@page>
+</#macro>
