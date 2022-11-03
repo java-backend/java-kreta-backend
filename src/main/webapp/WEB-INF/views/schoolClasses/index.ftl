@@ -36,4 +36,6 @@
                       </table>
     </@numberOfItems>
 
+    <@newItemButtan link="/ftl/schoolClass/signup" name="osztály" />
+
  </@pageWithContainer>

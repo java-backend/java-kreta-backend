@@ -39,4 +39,17 @@ public class SchoolClassFTLController {
         model.addAttribute("add",false);
         return "schoolClasses/add-schoolClass";
     }
+
+    @GetMapping ("/schoolClass/signup")
+    public String showSingUpForm(Model model){
+        SchoolClass newSchoolClass=new SchoolClass();
+        model.addAttribute("schoolClass", newSchoolClass);
+        model.addAttribute("add", true);
+        return "schoolClasses/add-schoolClass";
+    }
+    @PostMapping ("/schoolClass/add-schoolClass")
+    public String addNewSchoolClass(@Valid SchoolClass schoolClass, BindingResult result, Model model){
+        service.saveOrUpdate(schoolClass);
+        return "redirect:/ftl/schoolClass/index";
+    }
 }
