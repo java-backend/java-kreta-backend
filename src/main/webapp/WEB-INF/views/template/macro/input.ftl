@@ -1,13 +1,21 @@
-<#macro textInput object placeholder>
+<#macro textInput attributes placeholder value>
     <tr>
-        <td><label for="${object}">${placeholder}</label></td>
-        <td><input required class="form-control" type="text" name="${object}" id="${object}" placeholder="${placeholder}" ></td>
+        <td><label for="${attributes}">${placeholder}</label></td>
+        <td><input required class="form-control" type="text" name="${attributes}" id="${attributes}" placeholder="${placeholder}" value="${value}"></td>
     </tr>
 </#macro>
 
-<#macro numberInput object placeholder>
+<#macro numberInput attributes placeholder value>
     <tr>
-        <td><label for="${object}">${placeholder}</label></td>
-        <td><input required class="form-control" type="number" name="${object}" id="${object}" placeholder="${placeholder}" ></td>
+        <td><label for="${attributes}">${placeholder}</label></td>
+        <td><input required class="form-control" type="number" name="${attributes}" id="${attributes}" placeholder="${placeholder}" value=${value} ></td>
+    </tr>
+</#macro>
+
+
+<#macro numberInputID attributes placeholder>
+    <tr>
+        <td><label for="${attributes}">${placeholder}</label></td>
+        <td><input required class="form-control" type="number" name="${attributes}" id="${attributes}" placeholder="${placeholder}"></td>
     </tr>
 </#macro>

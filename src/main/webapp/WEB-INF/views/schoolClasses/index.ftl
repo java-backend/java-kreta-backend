@@ -2,6 +2,7 @@
 <#include "../template/macro/new-item-buttan.ftl"/>
 <#include "../template/macro/list.ftl"/>
 
+<!-- https://asbnotebook.com/spring-boot-freemarker-crud-example/ -->
 <!-- https://www.dariawan.com/tutorials/spring/spring-boot-freemarker-crud-example/ -->
 <!-- https://github.com/leszekgruchala/spring-freemarker-crud -->
 <!-- https://github.com/alanshaw/pagination-freemarker-macros/blob/master/pagination.ftl -->
@@ -27,8 +28,8 @@
                               <td>${schoolClass.schoolClass}</td>
                               <td>${schoolClass.classType}</td>
                               <td>${schoolClass.teacherId}</td>
-                              <td> <a class="btn btn-primary btn-xs" href="">Szerkesztés</a></td>
-                              <td> <a class="btn btn-primary btn-xs" href="">Törlés</a></td>
+                              <td> <a class="btn btn-primary btn-xs" href="/ftl/schoolClass/edit/${schoolClass.id}">Szerkesztés</a></td>
+                              <td> <a class="btn btn-primary btn-xs" href="/ftl/schoolClass/delete/${schoolClass.id}">Törlés</a></td>
                           </tr>
                         </#list>
                        

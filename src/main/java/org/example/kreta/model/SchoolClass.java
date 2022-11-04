@@ -1,14 +1,15 @@
 package org.example.kreta.model;
 
 import javax.persistence.*;
+import org.example.kreta.model.baseclass.ModelWithIdAndAnnotation;
 
 
 @Entity
 @Table (name="schoolClass")
-public class SchoolClass {
-    @Id
+public class SchoolClass extends ModelWithIdAndAnnotation {
+  /*  @Id
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long id; */
 
     @Column (name = "schoolClass",unique = false)
     private int schoolClass;

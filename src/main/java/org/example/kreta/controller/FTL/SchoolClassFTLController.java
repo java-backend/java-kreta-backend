@@ -40,6 +40,23 @@ public class SchoolClassFTLController {
         return "schoolClasses/add-schoolClass";
     }
 
+    @PostMapping("/schoolClass/update/{id}")
+    public String updateSubject(@PathVariable("id") Long id, @Valid SchoolClass schoolClass, BindingResult result, Model model) {
+        if (result.hasErrors()){
+            schoolClass.setId(id);
+            return "schoolClasses/add-subject";
+        }
+        service.saveOrUpdate(schoolClass);
+        return "redirect:/ftl/schoolClass/index/";
+    }
+
+    @GetMapping("/schoolClass/delete/{id}")
+    public String deleteUser (@PathVariable("id") long id, Model model) {
+        SchoolClass schoolClass = service.getSchoolClassByID(id);
+        service.delete(id);
+        return "redirect:/ftl/schoolClass/index";
+    }
+
     @GetMapping ("/schoolClass/signup")
     public String showSingUpForm(Model model){
         SchoolClass newSchoolClass=new SchoolClass();
