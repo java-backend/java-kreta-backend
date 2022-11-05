@@ -69,4 +69,11 @@ public class SchoolClassFTLController {
         service.saveOrUpdate(schoolClass);
         return "redirect:/ftl/schoolClass/index";
     }
+
+    @GetMapping ("schoolClass/view/{id}")
+    public String viewSchoolClass(@PathVariable("id") long id, Model model){
+        SchoolClass schoolClass = service.getSchoolClassByID(id);
+        model.addAttribute("schoolClass", schoolClass);
+        return "schoolClasses/view-schoolClass";
+    }
 }

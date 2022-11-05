@@ -24,7 +24,7 @@
                         
                         <#list schoolClasses as schoolClass>
                           <tr>
-                              <td><a href="">${schoolClass.id}</a></td>
+                              <td><a href="/ftl/schoolClass/view/${schoolClass.id}">${schoolClass.id}</a></td>
                               <td>${schoolClass.schoolClass}</td>
                               <td>${schoolClass.classType}</td>
                               <td>${schoolClass.teacherId}</td>
