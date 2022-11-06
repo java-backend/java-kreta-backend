@@ -41,23 +41,21 @@ public class StudentsController {
         {
             return "redirect: /students/index";
         }
-        return "/students/update-student";
+        return "th/students/update-student";
     }
 
     @PostMapping("/student/update/{id}")
     public String updateStudent(@PathVariable("id") Long id, @Valid Student student, BindingResult result, Model model) {
         if (result.hasErrors()){
             student.setId(id);
-            return "/students/update-student";
+            return "th/students/update-student";
         }
         try {
-
-
             service.saveOrUpdate(student);
         }catch (RecordNotFoundException exception){
-            return "redirect: /students/index";
+            return "redirect:/student/index";
         }
-        return "redirect:/students/index/";
+        return "redirect:/student/index/";
     }
 
     @GetMapping("/student/delete/{id}")
@@ -78,7 +76,7 @@ public class StudentsController {
     public ModelAndView showSingUpForm(){
         Student nevStudent=new Student();
         ModelAndView mav=new ModelAndView();
-        mav.setViewName("/th/students/add-student");
+        mav.setViewName("th/students/add-student");
         mav.addObject("student",nevStudent);
         return mav;
     }

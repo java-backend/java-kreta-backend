@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 //https://howtodoinjava.com/spring-boot2/pagination-sorting-example/
 
 @Repository
-public interface StudentRepo extends PagingAndSortingRepository<Student,Long> {
+public interface StudentRepository extends PagingAndSortingRepository<Student,Long> {
 }
