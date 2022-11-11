@@ -14,7 +14,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Adatkezelés</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="<@spring.url "/ftl/subject/index"/>">Tantárgyak</a>
-                        <a class="dropdown-item" ref="#">Osztályok</a>
+                        <a class="dropdown-item"  href="<@spring.url "/ftl/schoolClass/index"/>">Osztályok</a>
                         <a class="dropdown-item" ref="#">Diákok</a>
                         <div class="dropdown-divider"></div>
                     </div>

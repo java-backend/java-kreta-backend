@@ -7,14 +7,24 @@ import lombok.Setter;
 import org.example.kreta.model.baseclass.ModelWithIdAndAnnotation;
 
 import javax.persistence.*;
+import org.example.kreta.model.baseclass.ModelWithIdAndAnnotation;
 
 
 @Entity
-@Table(name="schoolclass")
+
+@Table (name="schoolClass")
+public class SchoolClass extends ModelWithIdAndAnnotation {
+  /*  @Id
+    @Column(name = "id", nullable = false)
+    private Long id; */
+
+
+
 @Setter
 @Getter
 @AllArgsConstructor
-public class SchoolClass extends ModelWithIdAndAnnotation {
+
+
     @Column (name = "schoolClass",unique = false)
     private int schoolClass;
     @Column(name = "classType",nullable = false)
