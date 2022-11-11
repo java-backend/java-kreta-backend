@@ -11,7 +11,7 @@ import javax.persistence.*;
 @MappedSuperclass
 public abstract class ModelWithIdAndAnnotation {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     protected long id;
 }

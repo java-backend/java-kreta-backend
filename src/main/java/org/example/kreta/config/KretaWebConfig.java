@@ -21,7 +21,8 @@ public class KretaWebConfig extends WebMvcConfigurationSupport {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/**");
         //registry.addResourceHandler("/templates/**").addResourceLocations("classpath:/templates/**");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
 
     }
 

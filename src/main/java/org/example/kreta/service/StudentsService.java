@@ -3,7 +3,7 @@ package org.example.kreta.service;
 import org.example.kreta.model.Student;
 import org.example.kreta.model.generic.PagedList;
 import org.example.kreta.repo.exceptions.RecordNotFoundException;
-import org.example.kreta.repo.interfaces.StudentRepo;
+import org.example.kreta.repo.interfaces.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,7 +19,7 @@ import java.util.Optional;
 public class StudentsService {
 
     @Autowired
-    StudentRepo  studentRepository;
+    StudentRepository studentRepository;
 
     public List<Student> getAllStudents()
     {

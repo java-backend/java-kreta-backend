@@ -22,8 +22,11 @@ public class SchoolClassesService {
 
     public List<SchoolClass> getAllSchoolClass()
     {
-        List<SchoolClass> schoolClasses=new ArrayList<SchoolClass>();
-        schoolClassRepository.findAll().forEach(schoolClass -> schoolClasses.add(schoolClass));
+        Iterable<SchoolClass> iSchoolClasses=new ArrayList<SchoolClass>();
+        //schoolClassRepository.findAll().forEach(schoolClass -> schoolClasses.add(schoolClass));
+        iSchoolClasses=schoolClassRepository.findAll();
+        List<SchoolClass> schoolClasses=new ArrayList<>();
+        iSchoolClasses.forEach(schoolClass -> schoolClasses.add(schoolClass));
         return schoolClasses ;
     }
 
